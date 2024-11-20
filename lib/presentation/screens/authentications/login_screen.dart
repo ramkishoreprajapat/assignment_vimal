@@ -24,13 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
 
   @override
-  void initState() {
-    super.initState();
-    _usernameController.text = "v.rai@payyap.ch";
-    _passwordController.text = "Hello@1234";
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {       

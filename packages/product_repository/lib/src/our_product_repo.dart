@@ -216,8 +216,12 @@ class OurProductRepo implements ProductRepository {
           'paging': {'first': 20}
         },
       );
-      QueryResult result = await client.query(options);
-      return result;     
+      QueryResult result = await client
+          .query(options)
+          .timeout(const Duration(seconds: 60), onTimeout: () {
+        throw Exception;
+      });
+      return result;
     } catch (e) {
       rethrow;
     }
