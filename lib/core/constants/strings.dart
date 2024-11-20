@@ -11,5 +11,6 @@ class Strings {
   static const String loading = "Loading...";
   static const String someThingWentWrong = "Something went wrong!";
   static const String notProductAddedYet = "No product added yet.";
+  static const String rs = "Rs";
 
 }

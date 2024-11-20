@@ -20,6 +20,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     super.initState();
+    refreshTask();
   }
 
   @override
@@ -42,19 +43,13 @@ class _ProductScreenState extends State<ProductScreen> {
               });
             },
             icon: Icon(isDarkTheme ? Icons.light_mode : Icons.dark_mode),
-          ),
-          IconButton(
-            onPressed: () {
-              context.read<SignInBloc>().add(const SignOutRequired());
-            },
-            icon: const Icon(Icons.logout),
-          ),
+          )
         ],        
         safeAreaChild: BlocBuilder<ProductBloc, ListProductState>(
           builder: (context, state) {
             if (state is ListProductSuccess) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: state.productList!.isEmpty
                     ? const Expanded(
                         child: Center(child: Text(Strings.notProductAddedYet)))
@@ -62,23 +57,25 @@ class _ProductScreenState extends State<ProductScreen> {
                         itemCount: state.productList!.length,
                         itemBuilder: (context, index) {
                           var item = state.productList![index];
+                          var price = '${Strings.rs} ${double.parse(item.price)}';
                           return Card(
                             child: ListTile(
                               title: Text(
-                                item.title.length > 24
-                                    ? '${item.title.substring(0, 24)}...'
-                                    : item.title,
+                                item.name.length > 24
+                                    ? '${item.name.substring(0, 24)}...'
+                                    : item.name,
                                 maxLines: 1,
                                 style: const TextStyle(
                                   fontSize: 24,
                                 ),
                               ),
                               subtitle: Text(
-                                  item.description.length > 24
-                                      ? '${item.description.substring(0, 24)}...'
-                                      : item.description,
+                                  price.length > 24
+                                      ? '${price.substring(0, 24)}...'
+                                      : price,
                                   maxLines: 1,
                                   style: const TextStyle(fontSize: 16)),                              
+                                  trailing: Icon(item.favourite ? Icons.favorite : Icons.favorite_outline),
                             ),
                           );
                         }),
@@ -90,5 +87,7 @@ class _ProductScreenState extends State<ProductScreen> {
           },
         ));
   }
-
+  void refreshTask() {
+    context.read<ProductBloc>().add(const RefreshProductRequired());
+  }
 }

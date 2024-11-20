@@ -10,3 +10,7 @@ sealed class ListProductEvent extends Equatable {
 class ListProductRequired extends ListProductEvent {
   const ListProductRequired();
 }
+
+class RefreshProductRequired extends ListProductEvent {
+  const RefreshProductRequired();
+}

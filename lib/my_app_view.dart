@@ -29,7 +29,7 @@ class _MyAppViewState extends State<MyAppView> {
     super.initState();
     isDarkTheme = SharedPreferenceSingleton()
         .getBool(SharedPreferenceSingleton.isDarkTheme);
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {

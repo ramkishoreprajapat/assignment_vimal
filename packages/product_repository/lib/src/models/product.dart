@@ -1,47 +1,43 @@
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
-  final String id;
-  final String userId;
-  final String title;
-  final String description;
-  final String createdAt;
+  final int id;
+  final String name;
+  final String type;
+  final String price;
+  final bool favourite;
 
   const Product(
       {required this.id,
-      required this.userId,
-      required this.title,
-      required this.description,
-      required this.createdAt});
+      required this.name,
+      required this.type,
+      required this.price,
+      required this.favourite});
 
   static const empty =
-      Product(id: '', userId: '', title: '', description: '', createdAt: '');
+      Product(id: 0, name: '', type: '', price: '', favourite: false);
 
   Product copyWith(
-      {String? id,
-      String? userId,
-      String? title,
-      String? description,
-      String? createdAt}) {
+      {int? id, String? name, String? type, String? price, bool? favourite}) {
     return Product(
       id: id ?? this.id,
-      userId: userId ?? this.userId,
-      title: title ?? this.title,
-      description: description ?? this.description,
-      createdAt: createdAt ?? this.createdAt,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      price: price ?? this.price,
+      favourite: favourite ?? this.favourite,
     );
   }
 
   @override
-  List<Object?> get props => [userId, title, description];
+  List<Object?> get props => [name, type, price];
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: json['id'] as String,
-      userId: json['userId'] as String,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      createdAt: json['createdAt'] as String,
+      id: json['id'] as int,
+      name: json['name'] as String,
+      type: json['type'] as String,
+      price: json['price'] as String,
+      favourite: json['favourite'] as bool,
     );
   }
 }

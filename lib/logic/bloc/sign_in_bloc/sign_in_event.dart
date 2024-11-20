@@ -13,7 +13,3 @@ class SignInRequired extends SignInEvent {
 
   const SignInRequired(this.username, this.password);
 }
-
-class SignOutRequired extends SignInEvent {
-  const SignOutRequired();
-}

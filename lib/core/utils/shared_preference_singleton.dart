@@ -5,13 +5,13 @@ class SharedPreferenceSingleton {
   factory SharedPreferenceSingleton() => _instance;
   SharedPreferenceSingleton._internal();
 
-  static const String isHideOnBoardingScreen = 'isHideOnBoardingScreen';
+  static const String accessToken = 'access_token';
   static const String isDarkTheme = 'isDarkTheme';
 
   SharedPreferencesWithCache? _pref;
 
   Future<void> initialize() async {
-    const allowList = <String>{isHideOnBoardingScreen, isDarkTheme};
+    const allowList = <String>{accessToken, isDarkTheme};
 
     _pref = await SharedPreferencesWithCache.create(
       cacheOptions: const SharedPreferencesWithCacheOptions(

@@ -1,3 +1,4 @@
+import 'package:assignment_vimal/core/utils/shared_preference_singleton.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:user_repository/user_repository.dart';
@@ -15,6 +16,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         var response =
             await userRepository.signIn(event.username, event.password);
         if (response.statusCode == 200) {
+          SharedPreferenceSingleton().setString(
+              SharedPreferenceSingleton.accessToken,
+              User.fromJson(response.succcessData).accessToken);
           emit(SignInSuccess());
         } else {
           emit(SignInFailure(message: response.errorData.errorDescription));
@@ -22,10 +26,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       } catch (e) {
         emit(SignInFailure(message: e.toString()));
       }
-    });
-
-    on<SignOutRequired>((event, emit) async {
-      await userRepository.signOut();
     });
   }
 }

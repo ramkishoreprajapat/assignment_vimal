@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:user_repository/src/models/error_model.dart';
 import 'package:user_repository/src/models/main_response.dart';
-import 'package:user_repository/src/models/user.dart';
 import 'package:user_repository/src/user_repo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -41,6 +40,4 @@ class AuthUserRepo implements UserRepository {
     }
   }
 
-  @override
-  Future<void> signOut() async {}
 }

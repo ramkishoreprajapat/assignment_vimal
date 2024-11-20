@@ -1,5 +1,5 @@
-import 'models/models.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 abstract class ProductRepository {
-  Future<List<Product>> getProducts();
+  Future<QueryResult> getProducts(String accessToken);
 }
