@@ -1,4 +1,4 @@
-# Assignment by Vimal Rai
+# Assignment for Vimal Rai
 
 Develop a login screen in a Flutter application. The login screen should authenticate users by 
 making a POST request to the Keycloak endpoint provided.
