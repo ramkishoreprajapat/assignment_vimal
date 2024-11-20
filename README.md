@@ -12,8 +12,7 @@ app should use the token received in the previous step for authentication.
 
 I have developed an application for state management using BLoC (Business Logic Component). This combination ensures a scalable, reactive, and efficient app architecture.
 
-
-
+https://github.com/user-attachments/assets/ca15629c-130f-4fce-9c43-78be5107a06f
 
 <table>
   <tr>
